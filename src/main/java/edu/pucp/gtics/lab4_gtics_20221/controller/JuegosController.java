@@ -64,9 +64,6 @@ public class JuegosController {
         }else{
             return "redirect:/juegos";
         }
-
-
-
     }
 
     @PostMapping("/save")

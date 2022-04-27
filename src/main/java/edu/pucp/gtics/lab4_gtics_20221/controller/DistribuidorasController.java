@@ -55,14 +55,20 @@ public class DistribuidorasController {
     }
 
     @PostMapping("/save")
-    public String guardarDistribuidora(@ModelAttribute("distribuidora") Distribuidoras distribuidora, RedirectAttributes attr){
-        if(distribuidora.getIddistribuidora() == 0){
-            attr.addFlashAttribute("msg","Distribuidora creada exitosamente");
+    public String guardarDistribuidora(@ModelAttribute("distribuidora") @Valid Distribuidoras distribuidora,BindingResult bindingResult, Model model, RedirectAttributes attr){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("listaDistribuidoras",distribuidorasRepository.findAll());
+            model.addAttribute("listaPaises",paisesRepository.findAll());
+            return "distribuidoras/editarFrm";
         }else{
-            attr.addFlashAttribute("msg","Distribuidora actualizada exitosamente");
+            if(distribuidora.getIddistribuidora() == 0){
+                attr.addFlashAttribute("msg","Distribuidora creada exitosamente");
+            }else{
+                attr.addFlashAttribute("msg","Distribuidora actualizada exitosamente");
+            }
+            distribuidorasRepository.save(distribuidora);
+            return "redirect:/distribuidoras/lista";
         }
-        distribuidorasRepository.save(distribuidora);
-        return "redirect:/distribuidoras/lista";
     }
 
     @GetMapping("/borrar")

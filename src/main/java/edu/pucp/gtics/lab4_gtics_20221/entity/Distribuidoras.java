@@ -4,10 +4,7 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "distribuidoras")
@@ -24,10 +21,11 @@ public class Distribuidoras {
     @URL
     private String web;
     @Digits(integer = 10,fraction = 0)
-    @Min(value = 1800)
-    @Max(value = 2100)
+    @Min(value = 1800,message = "El numero debe ser menor a 2100 y mayor a 1800")
+    @Max(value = 2100,message = "El numero debe ser menor a 2100 y mayor a 1800")
     private int fundacion = 1870;
 
+    @NotNull(message = "El pais no debe ser nulo")
     @ManyToOne
     @JoinColumn(name = "idsede")
     private Paises pais;
