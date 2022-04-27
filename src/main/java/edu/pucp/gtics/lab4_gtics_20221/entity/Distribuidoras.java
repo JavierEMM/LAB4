@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 @Table(name = "distribuidoras")
 public class Distribuidoras {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int iddistribuidora;
 
     private String nombre;

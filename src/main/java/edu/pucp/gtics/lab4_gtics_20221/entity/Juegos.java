@@ -9,10 +9,13 @@ import javax.validation.constraints.*;
 public class Juegos {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idjuego;
 
+    @Size(min = 3,max = 45,message = "El mensaje debe contener entre 3 y 45 caracteres")
     private String nombre;
 
+    @Size(min = 3,max = 400,message = "El mensaje debe contener entre 3 y 400 caracteres")
     private String descripcion;
 
     private double precio;
