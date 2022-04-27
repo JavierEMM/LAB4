@@ -54,16 +54,23 @@ public class DistribuidorasController {
         return "distribuidoras/editarFrm";
     }
 
-
-    public String guardarDistribuidora( ){
+    @PostMapping("/save")
+    public String guardarDistribuidora(@ModelAttribute("distribuidora") Distribuidoras distribuidora, RedirectAttributes attr){
+        if(distribuidora.getIddistribuidora() == 0){
+            attr.addFlashAttribute("msg","Distribuidora creada exitosamente");
+        }else{
+            attr.addFlashAttribute("msg","Distribuidora actualizada exitosamente");
+        }
+        distribuidorasRepository.save(distribuidora);
         return "redirect:/distribuidoras/lista";
     }
 
     @GetMapping("/borrar")
-    public String borrarDistribuidora(@RequestParam("id") int id){
+    public String borrarDistribuidora(@RequestParam("id") int id, RedirectAttributes attr){
         Optional<Distribuidoras> opt = distribuidorasRepository.findById(id);
         if (opt.isPresent()) {
             distribuidorasRepository.deleteById(id);
+            attr.addFlashAttribute("msg","Distribuidora borrada exitosamente");
         }
         return "redirect:/distribuidoras/lista";
     }
