@@ -18,6 +18,9 @@ public class Juegos {
     @Size(min = 3,max = 400,message = "El mensaje debe contener entre 3 y 400 caracteres")
     private String descripcion;
 
+    @Digits(integer = 10,fraction = 0)
+    @Min(value = 10)
+    @Max(value = 500)
     private double precio;
 
     private String image;
