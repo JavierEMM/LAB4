@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-
+@Controller
 public class JuegosController {
 
     @Autowired
@@ -34,24 +34,25 @@ public class JuegosController {
     UserRepository userRepository;
 
     @GetMapping(value = {"", "/","/juegos/lista"})
-    public String listaJuegos (){
-
+    public String listaJuegos (Model model){
+        model.addAttribute("listaJuegos", juegosRepository.findAll());
+        return "juegos/lista";
     }
 
     public String vistaJuegos ( ){
-
+        return "juegos/vista";
     }
 
     public String nuevoJuegos( ){
-
+        return "juegos/editarFrm";
     }
 
     public String editarJuegos( ){
-
+        return "juegos/editarFrm";
     }
 
     public String guardarJuegos( ){
-
+        return "redirect:/";
     }
 
     @GetMapping("/juegos/borrar")
