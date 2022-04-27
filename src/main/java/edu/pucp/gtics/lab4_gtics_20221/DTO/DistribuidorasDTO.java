@@ -5,8 +5,7 @@ public interface DistribuidorasDTO {
     String getNombre();
     String getDescripcion();
     Integer getFundacion();
-    String getWeb();
-    Integer getSede();
+    String getSede();
 
 
 }
