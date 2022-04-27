@@ -1,7 +1,10 @@
 package edu.pucp.gtics.lab4_gtics_20221.entity;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -13,18 +16,20 @@ public class Distribuidoras {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int iddistribuidora;
-
+    @Size(min=3,max=50,message = "El nombre debe tener entre 3 y 50 caracteres")
     private String nombre;
-
+    @Size(min=3,max=198,message = "El nombre debe tener entre 3 y 50 caracteres")
     private String descripcion;
-
+    @Size(min=3,max=198,message = "El nombre debe tener entre 3 y 50 caracteres")
+    @URL
     private String web;
-
+    @Digits(integer = 10,fraction = 0)
+    @Min(value = 1800)
+    @Max(value = 2100)
     private int fundacion = 1870;
 
     @ManyToOne
     @JoinColumn(name = "idsede")
-
     private Paises pais;
 
     public int getIddistribuidora() {
