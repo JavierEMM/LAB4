@@ -12,6 +12,6 @@ import java.util.List;
 
 public interface DistribuidorasRepository extends JpaRepository<Distribuidoras,Integer> {
 
-    @Query(nativeQuery = true,value = "SELECT d.iddistribuidora,d.nombre,d.descripcion,d.fundacion,d.fundacion,d.web, p.nombre as 'nombresede' from distribuidoras d left JOIN paises p on p.idpais = d.idsede;")
+    @Query(nativeQuery = true,value = "SELECT d.iddistribuidora,d.nombre,d.descripcion,d.fundacion,d.web, p.nombre as 'nombresede' from distribuidoras d left JOIN paises p on p.idpais = d.idsede;")
     List<DistribuidorasDTO> distribuidorasListar();
 }
