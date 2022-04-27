@@ -8,34 +8,35 @@
         <main>
             <!-- Contenido -->
         <div class="page-header text-center">
-            <h2 th:text="">Nueva Distribuidora</h2>
+            <h2 th:text="${distribuidora.iddistribuidora == 0? 'Nueva Distribuidora' : 'Editar Distribuidora'}">Nueva/Editar Distribuidora</h2>
         </div>
         <div class="container-fluid">
-                <form method="POST"  class="row g-3" >
+                <form method="POST"  class="row g-3" th:action="@{'/product/save'}" th:object="${distribuidora}">
+                    <input type="hidden" th:field="*{iddistribuidora}" />
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input name="nombre" type="text" class="form-control" id="nombre">
+                        <label >Nombre</label>
+                        <input type="text" class="form-control" th:field="*{nombre}">
                     </div>
                     <div class="form-group">
-                        <label for="descripcion">Descripción</label>
-                        <input name="descripcion" type="text" class="form-control" id="descripcion">
+                        <label >Descripción</label>
+                        <input type="text" class="form-control" th:field="*{descripcion}">
                     </div>
                     <div class="form-group">
-                        <label for="web">URL Web</label>
-                        <input name="web" type="text" class="form-control" id="web">
+                        <label >URL Web</label>
+                        <input type="text" class="form-control" th:field="*{web}">
                     </div>
                     <div class="form-group">
-                        <label for="funcion">Fundación</label>
-                        <input name="fundacion" type="text" class="form-control" id="funcion">
+                        <label >Fundación</label>
+                        <input type="text" class="form-control" th:field="*{fundacion}">
                     </div>
                     <div class="form-group">
-                        <label for="pais">Sede</label>
-                        <input name="pais" type="text" class="form-control" id="pais">
+                        <label >Sede</label>
+                        <input type="text" class="form-control" th:field="*{pais}">
                     </div>
 
                     <div class="form-group">
                         <a th:href="@{/distribuidoras/lista}" class="btn btn-danger">Cancelar</a>
-                        <button type="submit" class="btn btn-primary" th:text="Boton ---">Reg/act</button>
+                        <button type="submit" class="btn btn-primary" th:text="${distribuidora.iddistribuidora == 0? 'Registrar' : 'Actualizar'}">Reg/act</button>
                     </div>
                 </form>
         </div>
