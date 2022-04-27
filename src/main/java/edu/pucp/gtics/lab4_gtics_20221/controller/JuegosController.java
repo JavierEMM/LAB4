@@ -63,14 +63,15 @@ public class JuegosController {
             model.addAttribute("listaDistribuidora",distribuidorasRepository.findAll());
             return "juegos/editarFrm";
         }else{
-            return "redirect:juegos";
+            return "redirect:/juegos";
         }
 
 
 
     }
 
-    public String guardarJuegos(@ModelAttribute("juegos")@Valid Juegos juegos ){
+    @PostMapping("/save")
+    public String guardarJuegos(@ModelAttribute("juegos") Juegos juegos ){
 
         return "redirect:/";
     }
