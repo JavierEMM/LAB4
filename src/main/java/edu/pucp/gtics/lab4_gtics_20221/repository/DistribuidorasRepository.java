@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface DistribuidorasRepository extends JpaRepository<Distribuidoras,Integer> {
 
-    @Query(nativeQuery = true,value = "")
+   // @Query(nativeQuery = true,value = "")
 }

@@ -35,15 +35,15 @@ public class DistribuidorasController {
 
 
     public String editarDistribuidoras(){
-
+        return "distribuidoras/editarFrm";
     }
 
     public String nuevaDistribuidora( ){
-
+        return "distribuidoras/editarFrm";
     }
 
     public String guardarDistribuidora( ){
-
+        return "distribuidoras/editarFrm";
     }
 
     @GetMapping("/borrar")
