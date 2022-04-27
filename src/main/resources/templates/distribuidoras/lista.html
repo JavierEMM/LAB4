@@ -30,7 +30,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="distribuidora,i ${listaDistribuidoras}">
+
+                    <tr th:each= " distribuidora,i : ${listaDistribuidoras}">
                         <td th:text="${i.index + 1}"></td>
                         <td th:text="${distribuidora.nombre}"></td>
                         <td th:text="${distribuidora.fundacion}"></td>

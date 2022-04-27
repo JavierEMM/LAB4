@@ -28,23 +28,23 @@ public class DistribuidorasController {
 
     @GetMapping(value = {"/lista"})
     public String listaDistribuidoras (Model model ){
-        model.addAttribute("listaDistribuidoras",distribuidorasRepository);
+        model.addAttribute("listaDistribuidoras",distribuidorasRepository.distribuidorasListar());
         return "distribuidoras/lista";
 
     }
 
 
-    public String editarDistribuidoras(){
-        return "distribuidoras/editarFrm";
+    /*public String editarDistribuidoras(){
+
     }
 
     public String nuevaDistribuidora( ){
-        return "distribuidoras/editarFrm";
+
     }
 
     public String guardarDistribuidora( ){
-        return "distribuidoras/editarFrm";
-    }
+
+    }*/
 
     @GetMapping("/borrar")
     public String borrarDistribuidora(@RequestParam("id") int id){
