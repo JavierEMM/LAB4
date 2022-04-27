@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@Controller
 @RequestMapping("/distribuidoras")
 
 public class DistribuidorasController {
@@ -28,13 +29,13 @@ public class DistribuidorasController {
 
     @GetMapping(value = {"/lista"})
     public String listaDistribuidoras (Model model ){
-        model.addAttribute("listaDistribuidoras",distribuidorasRepository);
+        model.addAttribute("listaDistribuidoras",distribuidorasRepository.distribuidorasListar());
         return "distribuidoras/lista";
 
     }
 
 
-    public String editarDistribuidoras(){
+    /*public String editarDistribuidoras(){
 
     }
 
@@ -44,7 +45,7 @@ public class DistribuidorasController {
 
     public String guardarDistribuidora( ){
 
-    }
+    }*/
 
     @GetMapping("/borrar")
     public String borrarDistribuidora(@RequestParam("id") int id){
