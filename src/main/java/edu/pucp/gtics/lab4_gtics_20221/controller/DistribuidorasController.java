@@ -63,8 +63,10 @@ public class DistribuidorasController {
         }else{
             if(distribuidora.getIddistribuidora() == 0){
                 attr.addFlashAttribute("msg","Distribuidora creada exitosamente");
+                attr.addFlashAttribute("opcion","alert-success");
             }else{
                 attr.addFlashAttribute("msg","Distribuidora actualizada exitosamente");
+                attr.addFlashAttribute("opcion","alert-success");
             }
             distribuidorasRepository.save(distribuidora);
             return "redirect:/distribuidoras/lista";
@@ -77,6 +79,7 @@ public class DistribuidorasController {
         if (opt.isPresent()) {
             distribuidorasRepository.deleteById(id);
             attr.addFlashAttribute("msg","Distribuidora borrada exitosamente");
+            attr.addFlashAttribute("opcion","alert-danger");
         }
         return "redirect:/distribuidoras/lista";
     }

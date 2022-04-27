@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @Controller
-@RequestMapping("/juegos")
+@RequestMapping(value = {"/juegos",""})
 public class JuegosController {
 
     @Autowired
@@ -77,8 +77,10 @@ public class JuegosController {
         }else{
             if (juegos.getIdjuego()==0){
                 redirectAttributes.addFlashAttribute("error","Juego creado exitosamente");
+                redirectAttributes.addFlashAttribute("opcion","alert-success");
             }else{
                 redirectAttributes.addFlashAttribute("error","Juego actualizado exitosamente");
+                redirectAttributes.addFlashAttribute("opcion","alert-success");
             }
             juegosRepository.save(juegos);
             return "redirect:/juegos";
@@ -89,9 +91,11 @@ public class JuegosController {
     }
 
     @GetMapping("/borrar")
-    public String borrarDistribuidora(@RequestParam("id") int id){
+    public String borrarDistribuidora(@RequestParam("id") int id,RedirectAttributes redirectAttributes){
         Optional<Juegos> opt = juegosRepository.findById(id);
         if (opt.isPresent()) {
+            redirectAttributes.addFlashAttribute("error","Juego eliminado exitosamente");
+            redirectAttributes.addFlashAttribute("opcion","alert-danger");
             juegosRepository.deleteById(id);
         }
         return "redirect:/juegos/lista";

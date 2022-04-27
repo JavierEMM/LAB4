@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
-                        <input type="text" class="form-control" th:field="*{descripcion}" th:classappend="${#fields.hasErrors('descripcion')?'is-invalid':''}">
+                        <textarea type="text" class="form-control" th:field="*{descripcion}" th:classappend="${#fields.hasErrors('descripcion')?'is-invalid':''}"></textarea>
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}"
                              th:errors="*{descripcion}"></div>
                     </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label >Sede</label>
-                        <select class="form-control" th:field="*{pais}" th:classappend="${#fields.hasErrors('pais')?'is-invalid':''}">
+                        <select class="form-select" th:field="*{pais}" th:classappend="${#fields.hasErrors('pais')?'is-invalid':''}">
                             <option value="-1">-Seleccione-</option>
                             <option th:each="pais : ${listaPaises}" th:value="${pais.idpais}"
                                     th:text="${pais.nombre}"></option>

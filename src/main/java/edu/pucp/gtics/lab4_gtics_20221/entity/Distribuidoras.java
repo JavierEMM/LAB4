@@ -15,10 +15,10 @@ public class Distribuidoras {
     private int iddistribuidora;
     @Size(min=3,max=50,message = "El nombre debe tener entre 3 y 50 caracteres")
     private String nombre;
-    @Size(min=3,max=198,message = "El nombre debe tener entre 3 y 50 caracteres")
+    @Size(min=3,max=198,message = "La descripcion debe tener entre 3 y 198 caracteres")
     private String descripcion;
-    @Size(min=3,max=198,message = "El nombre debe tener entre 3 y 50 caracteres")
-    @URL
+    @Size(min=3,max=198,message = "El url debe tener entre 3 y 198 caracteres")
+    @URL(message = "Debe ser un url valido")
     private String web;
     @Digits(integer = 10,fraction = 0)
     @Min(value = 1800,message = "El numero debe ser menor a 2100 y mayor a 1800")
