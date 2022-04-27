@@ -28,7 +28,7 @@ public class DistribuidorasController {
 
     @GetMapping(value = {"/lista"})
     public String listaDistribuidoras (Model model ){
-        model.addAttribute("listaDistribuidoras",distribuidorasRepository.distribuidorasListar());
+        model.addAttribute("listaDistribuidoras",distribuidorasRepository.findAll());
         return "distribuidoras/lista";
 
     }

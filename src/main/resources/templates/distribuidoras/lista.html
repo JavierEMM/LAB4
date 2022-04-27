@@ -33,9 +33,9 @@
 
                     <tr th:each= " distribuidora,i : ${listaDistribuidoras}">
                         <td th:text="${i.index + 1}"></td>
-                        <td th:text="${distribuidora.getNombre()}"></td>
-                        <td th:text="${distribuidora.getFundacion()}"></td>
-                        <td th:text="${distribuidora.getSede()}"></td>
+                        <td th:text="${distribuidora.nombre}"></td>
+                        <td th:text="${distribuidora.fundacion}"></td>
+                        <td th:text="${distribuidora.pais.nombre}"></td>
                         <td><a class="btn btn-primary" th:title="Editar" th:href="@{'/distribuidoras/editar?id=' + ${distribuidora.iddistribuidora}}"><span class="bi bi-pencil-square"></span></a></td>
                         <td><a class="btn btn-danger" th:title="Borrar" th:href="@{'/distribuidoras/borrar?id=' + ${distribuidora.iddistribuidora}}"><span class="bi bi-trash"></span></a></td>
                     </tr>
