@@ -55,7 +55,6 @@ public class JuegosController {
     @GetMapping("/editar")
     public String editarJuegos(@ModelAttribute("juegos") Juegos juegos,Model model,@RequestParam("id") Integer id){
         Optional<Juegos> optionalJuegos = juegosRepository.findById(id);
-        System.out.println("id  :" + id);
         if (optionalJuegos.isPresent()){
             juegos=optionalJuegos.get();
             model.addAttribute("juegos",juegos);
