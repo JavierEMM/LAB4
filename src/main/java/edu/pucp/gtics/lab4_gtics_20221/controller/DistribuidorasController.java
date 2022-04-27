@@ -16,7 +16,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
 @RequestMapping("/distribuidoras")
 
 public class DistribuidorasController {

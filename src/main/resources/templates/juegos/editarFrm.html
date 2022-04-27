@@ -8,47 +8,65 @@
         <main>
             <!-- Contenido -->
         <div class="page-header text-center">
-            <h2 th:text=""></h2>
+            <h2 th:text="Nuevo"></h2>
         </div>
         <div class="container-fluid">
-                <form method="POST" class="row g-3" >
+                <form method="POST" class="row g-3"  th:object="${juegos}">
                     <div class="form-group">
                         <label>Nombre</label>
-
+                        <br>
+                        <input type="text" th:field="*{nombre}">
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
+                        <br>
+                        <input type="text" th:field="*{descripcion}">
 
                     </div>
                     <div class="form-group">
-                        <label for="">Género</label>
+                        <label for="genero">Género</label>
+                        <br>
+                        <select id="genero" th:field="*{genero}" >
+                            <option th:value="0">-Seleccione-</option>
+                            <option th:each="genero : ${listaGeneros}" th:text="${genero.nombre}" th:value="${genero.idgenero}" ></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="plataforma">Plataforma</label>
+                        <br>
+                        <select th:field="*{plataforma}" id="plataforma">
+                            <option th:value="0">-Seleccione-</option>
+                            <option th:each="plataforma : ${listaPlataforma}" th:text="${plataforma.nombre}" th:value="${plataforma.idplataforma}"></option>
+                        </select>
 
                     </div>
                     <div class="form-group">
-                        <label for="">Plataforma</label>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="">Distribuidora</label>
+                        <label for="distribuidora">Distribuidora</label>
+                        <br>
+                        <select th:field="*{distribuidora}" id="distribuidora">
+                            <option th:value="0">-Seleccione-</option>
+                            <option th:each="distribuidora: ${listaDistribuidora}" th:value="${distribuidora.iddistribuidora}" th:text="${distribuidora.nombre}"></option>
+                        </select>
 
                     </div>
                     <div class="form-group">
                         <label>Imagen URL</label>
-
+                        <br>
+                        <input type="text" th:field="*{image}">
                     </div>
                     <div class="form-group">
                         <label>Precio</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">S/</div>
-                            </div>
+                                <div class="input-group-text">S/  <input type="text" th:field="*{precio}"></div>
 
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <a th:href="@{/juegos/lista}" class="btn btn-danger">Cancelar</a>
-                        <button type="submit" class="btn btn-primary" th:text="Boton ---">Reg/act</button>
+                        <button type="submit" class="btn btn-primary" th:text="Boton">Reg/act</button>
                     </div>
                 </form>
         </div>

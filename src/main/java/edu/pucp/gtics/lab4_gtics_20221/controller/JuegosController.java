@@ -16,6 +16,7 @@ import java.util.Optional;
 
 
 @Controller
+@RequestMapping("/juegos")
 public class JuegosController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class JuegosController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping(value = {"", "/","/juegos/lista"})
+    @GetMapping(value = {"", "/","/lista"})
     public String listaJuegos (Model model){
         model.addAttribute("listaJuegos", juegosRepository.findAll());
         return "juegos/lista";
@@ -43,15 +44,34 @@ public class JuegosController {
         return "juegos/vista";
     }
 
-    public String nuevoJuegos( ){
+    @GetMapping("/nuevo")
+    public String nuevoJuegos(@ModelAttribute("juegos") Juegos juegos,Model model ){
+        model.addAttribute("listaGeneros",generosRepository.findAll());
+        model.addAttribute("listaPlataforma",plataformasRepository.findAll());
+        model.addAttribute("listaDistribuidora",distribuidorasRepository.findAll());
+
         return "juegos/editarFrm";
     }
+    @GetMapping("/editar")
+    public String editarJuegos(@ModelAttribute("juegos") Juegos juegos,Model model,@RequestParam("id") Integer id){
+        Optional<Juegos> optionalJuegos = juegosRepository.findById(id);
+        if (optionalJuegos.isPresent()){
+            juegos=optionalJuegos.get();
+            model.addAttribute("juegos",juegos);
+            model.addAttribute("listaGeneros",generosRepository.findAll());
+            model.addAttribute("listaPlataforma",plataformasRepository.findAll());
+            model.addAttribute("listaDistribuidora",distribuidorasRepository.findAll());
+            return "juegos/editarFrm";
+        }else{
+            return "redirect:juegos";
+        }
 
-    public String editarJuegos( ){
-        return "juegos/editarFrm";
+
+
     }
 
-    public String guardarJuegos( ){
+    public String guardarJuegos(@ModelAttribute("juegos")@Valid Juegos juegos ){
+
         return "redirect:/";
     }
 
